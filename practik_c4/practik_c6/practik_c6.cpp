@@ -3,6 +3,47 @@ using namespace std;
 
 void main()
 {
+	/*srand(time(NULL));
+	int a;
+	a = rand();
+	cout << "a = " << a << endl;
+
+	a = rand();
+	cout << "a = " << a << endl;
+
+	a = rand() % 100;
+	cout << "a = " << a << endl;
+
+	a = rand() % (20 - 10) + 10;
+	cout << "a = " << a << endl;
+
+	const short size = 10;
+	int arr[size];
+	for (short i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 100;
+		cout << arr[i] << " ";
+	}
+	cout << endl;*/
+
+	/*const short row = 5;
+	const short col = 6;
+	int arr[row][col];
+
+	int arr2[2][2] = { {1,2},{3,4} };
+	int arr3[3][3] = { 1,2,3,4,5,6,7,8,9 };
+	for (short i = 0; i < 3; i++)
+	{
+		for (short j = 0; j < 3; j++)
+		{
+			cout << arr3[i][j] << " ";
+		}
+		cout << endl;
+	}*/
+	/*------------------------------------
+	--------------------------------------
+	-------------------------------------*/
+
 	srand(time(0));
 	char key;
 	const short n = 5;
