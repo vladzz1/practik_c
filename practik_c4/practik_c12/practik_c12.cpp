@@ -1,8 +1,23 @@
 #include <iostream>
 #include <iomanip>
+//#include <windows.h>
 using std::cout;
 using std::endl;
 using std::cin;
+//using std::setw;
+
+//void setColor(int color)
+//{
+//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+//}
+//
+//void setPos(int x, int y)
+//{
+//	COORD c;
+//	c.X = x;
+//	c.Y = y;
+//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+//}
 
 //short len_c(char arr[], short size)
 //{
@@ -29,6 +44,107 @@ using std::cin;
 
 void main()
 {
+	//setw()
+	/*cout << "AA" << setw(3) << endl;
+	cout << setw(3) << "AA" << endl;
+	cout << "B" << endl;
+	cout << "C" << endl;
+	double x = -5, y = 2.7, z = 1.14;*/
+	//cout << left << setw(5) << x << endl;
+	/*cout << setw(5) << x << endl;
+	cout << setw(5) << y << endl;
+	cout << setw(5) << z << endl;
+
+	const short row = 15, col = 20;
+	int arr[row][col];
+	for (short i = 0; i < row; i++)
+	{
+		for (short j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % 100;
+			cout << setw(4) << arr[i][j];
+		}
+		cout << endl;
+	}*/
+
+	//int a = (int) 2.56;
+	/*for (short i = 0; i < 255; i++)
+	{
+		cout << "code = " << i << " char = " << (char)i << endl;
+	}
+
+	setColor(5);
+	cout << "hello world\n";
+	setColor(2);
+	cout << "hello world\n";
+	setColor(3);
+	cout << "hello world\n";
+	setColor(7);
+	cout << "hello world\n";*/
+	//Sleep(500);
+	//system("cls");
+
+	/*char s = 'a';
+	cout << s << endl;*/
+	//C-style lines
+	//string name
+	/*char maystring[] = { 'C', 'a', 't', '!', '\0' };
+	for (short i = 0; i < 4; i++)
+	{
+		cout << maystring[i];
+	}*/
+
+	//char maystring[] = "string";//string\0
+	//cout << maystring << " has " << sizeof(maystring) << " characters " << endl;
+	////maystring = "cat"; error
+	//maystring[1] = 'p';
+	//cout << maystring << endl;
+	//int arr[] = { 1, 2, 3, 4 };
+	////arr = 7; error
+	//char name[15] = "Nax";//3 + \0 = 4
+	//cout << "Name = " << name << endl;
+	//char myname[255];
+	//cout << "Enter name : ";
+	//cin.getline(myname, 255);
+	//cin >> myname;
+	//cout << "Name = " << myname << endl;
+
+	//------------------------------------
+	//------------------------------------
+	//------------------------------------
+
+	/*char text[] = "print this!";
+	char copy[50];
+	strcpy_s(copy, text);
+	cout << "Original : " << text << endl;
+	cout << "Copy : " << copy << endl;
+	char name[15] = "Max";
+	cout << "Name : " << name << endl;
+	cout << "Size" << sizeof(name) << endl;
+	cout << "Str lenght" << strlen(name) << endl;
+
+	char arr[255] = "Returns the head of a list";
+	cout << arr << endl;
+	cout << "Lenght = " << strlen(arr) << endl;
+	_strupr_s(arr);
+	cout << arr << endl;
+	_strlwr_s(arr);
+	cout << arr << endl;
+	_strrev(arr);
+	cout << arr << endl;
+	_strrev(arr);
+	cout << arr << endl;
+
+	cout << "Copy array : " << endl;
+	char arr[255];
+	strcpy_s(arr2, arr);
+	cout << arr2 << endl;
+	arr2[3] = '\0';*/
+
+	//------------------------------------
+	//------------------------------------
+	//------------------------------------
+
 	const short size = 20;
 
 	//завдання 1
