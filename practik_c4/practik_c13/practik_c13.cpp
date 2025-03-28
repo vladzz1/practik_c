@@ -43,6 +43,7 @@ void main()
 		strcat_s(string, c);
 	}
 	cout << string << endl;
+	cout << "--------------------\n";
 
 	//завдання 2
 
@@ -62,6 +63,7 @@ void main()
 		}
 	}
 	cout << "characters in a line: " << count << endl;
+	cout << "--------------------\n";
 
 	//завдання 3
 
@@ -82,5 +84,20 @@ void main()
 			string3[i] = symbol2;
 		}
 	}
-	cout << string3;
+	cout << string3 << endl;
+	cout << "--------------------\n";
+
+	//----------
+
+	char string4[]{ "adwc34dr56g45" };
+	count = 0;
+	n = strlen(string4);
+	for (short i = 0; i < n; i++)
+	{
+		if (isdigit(string4[i]))
+		{
+			count++;
+		}
+	}
+	cout << "numbers in a row: " << count << endl;
 }
