@@ -71,6 +71,7 @@ public:
 		{
 			fileXYZ.getline(readText, 100);
 			cout << readText << endl;
+			fileXYZ.close();
 		}
 	}
 };
