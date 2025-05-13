@@ -48,20 +48,6 @@ public:
 			corrent->next = newNode;
 		}
 	}
-	int operator [](int pos)
-	{
-		Node* corrent = head;
-		short i(1);
-		while (corrent != nullptr)
-		{
-			if (pos == i)
-			{
-				return corrent->value;
-			}
-			corrent = corrent->next;
-			i++;
-		}
-	}
 	int getElement(int pos)
 	{
 		Node* corrent = head;
@@ -103,6 +89,20 @@ public:
 		Node* corrent = head;
 		head = head->next;
 		delete corrent;
+	}
+	int operator [](int pos)
+	{
+		Node* corrent = head;
+		short i(1);
+		while (corrent != nullptr)
+		{
+			if (pos == i)
+			{
+				return corrent->value;
+			}
+			corrent = corrent->next;
+			i++;
+		}
 	}
 	~List()
 	{
