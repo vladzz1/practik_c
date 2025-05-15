@@ -9,6 +9,7 @@ void setColor(int color)
 
 class Student
 {
+protected:
 	string name;
 	string surname;
 	short age;
@@ -28,7 +29,7 @@ class Aspirant : public Student
 	string thesisTitle;
 public:
 	Aspirant() :thesisTitle("no data"), Student() {}
-	Aspirant(string thesisTitle) :thesisTitle(thesisTitle), Student() {}
+	Aspirant(string thesisTitle) :thesisTitle(thesisTitle), Student(name, surname, age) {}
 	void printA()
 	{
 		printS();
