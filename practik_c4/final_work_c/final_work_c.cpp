@@ -12,14 +12,57 @@ void setColor(int color)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-struct Element
+class Element
 {
 	string type;
 	string name;
 	int price;
+public:
+	Element() :type("no data"), name("no data"), price(0) {}
+	Element(string type, string name, int price)
+	{
+		this->type = type;
+		this->name = name;
+		if (price > 0)
+		{
+			this->price = price;
+		}
+		else
+		{
+			throw invalid_argument("error: incorrect price\n");
+		}
+	}
+	void setPrice(int price)
+	{
+		this->price = price;
+	}
+	void setType(string type)
+	{
+		this->type = type;
+	}
+	void setName(string name)
+	{
+		this->name = name;
+	}
+	int getPrice()const
+	{
+		return price;
+	}
+	string getType()const
+	{
+		return type;
+	}
+	string getName()const
+	{
+		return name;
+	}
+	void show(vector<Element> shop, short index)const
+	{
+		cout << index + 1 << ". type: " << shop[index].type << " | name: " << shop[index].name << " | price: " << shop[index].price << endl;
+	}
 };
 
-class Shop
+class Shop : public Element
 {
 	vector<Element> shop;
 	short size;
@@ -38,7 +81,8 @@ public:
 		{
 			for (short i = 0; i < size; i++)
 			{
-				cout << "\t" << i + 1 << ". type: " << shop[i].type << " | name: " << shop[i].name << " | price: " << shop[i].price << endl;
+				cout << "\t";
+				show(shop, i);
 			}
 		}
 	}
@@ -53,10 +97,7 @@ public:
 		cout << "\tenter price: ";
 		int price;
 		cin >> price;
-		Element element;
-		element.type = type;
-		element.name = name;
-		element.price = price;
+		Element element(type, name, price);
 		shop.push_back(element);
 		size++;
 	}
@@ -83,7 +124,7 @@ public:
 				cout << "-----------------------------------------\n";
 				for (short i = 0; i < size; i++)
 				{
-					cout << "type: " << shop[i].type << " | name: " << shop[i].name << " | price: " << shop[i].price << endl;
+					show(shop, i);
 				}
 				cout << "-----------------------------------------\n";
 				setColor(7);
@@ -138,7 +179,7 @@ public:
 			{
 				for (short j = 0; j < size - i - 1; j++)
 				{
-					if (shop[i].price > shop[i + 1].price)
+					if (shop[i].getPrice() > shop[i + 1].getPrice())
 					{
 						Element temp = shop[i];
 						shop[i] = shop[i + 1];
@@ -148,7 +189,8 @@ public:
 			}
 			for (short i = 0; i < size; i++)
 			{
-				cout << "\t" << i + 1 << "type: " << shop[i].type << " | name: " << shop[i].name << " | price: " << shop[i].price << endl;
+				cout << "\t";
+				show(shop, i);
 			}
 		}
 	}
@@ -164,11 +206,13 @@ public:
 		{
 			cout << "\tenter maximum price: ";
 			Element element;
-			cin >> element.price;
+			int item;
+			cin >> item;
+			element.setPrice(item);
 			short count(0);
 			for (short i = 0; i < size; i++)
 			{
-				if (shop[i].price <= element.price)
+				if (shop[i].getPrice() <= element.getPrice())
 				{
 					count++;
 				}
@@ -177,16 +221,17 @@ public:
 			{
 				for (short i = 0; i < size; i++)
 				{
-					if (shop[i].price <= element.price)
+					if (shop[i].getPrice() <= element.getPrice())
 					{
-						cout << "\t" << i + 1 << ". type: " << shop[i].type << " | name: " << shop[i].name << " | price: " << shop[i].price << endl;
+						cout << "\t";
+						show(shop, i);
 					}
 				}
 			}
 			else
 			{
 				setColor(5);
-				cout << "there are no products in the store with a price lower than " << element.price << endl;
+				cout << "there are no products in the store with a price lower than " << element.getPrice() << endl;
 				setColor(7);
 			}
 		}
@@ -203,11 +248,13 @@ public:
 		{
 			cout << "\tenter type: ";
 			Element element;
-			cin >> element.type;
+			string item;
+			cin >> item;
+			element.setType(item);
 			short count(0);
 			for (short i = 0; i < size; i++)
 			{
-				if (shop[i].type == element.type)
+				if (shop[i].getType() == element.getType())
 				{
 					count++;
 				}
@@ -216,16 +263,17 @@ public:
 			{
 				for (short i = 0; i < size; i++)
 				{
-					if (shop[i].type == element.type)
+					if (shop[i].getType() == element.getType())
 					{
-						cout << "\t" << i + 1 << ". type: " << shop[i].type << " | name: " << shop[i].name << " | price: " << shop[i].price << endl;
+						cout << "\t";
+						show(shop, i);
 					}
 				}
 			}
 			else
 			{
 				setColor(5);
-				cout << "there is no product type " << element.type << " in the store\n";
+				cout << "there is no product type " << element.getType() << " in the store\n";
 				setColor(7);
 			}
 		}
@@ -254,7 +302,7 @@ public:
 			{
 				throw invalid_argument("error: incorrect price\n");
 			}
-			shop[item - 1].price = newPrice;
+			shop[item - 1].setPrice(newPrice);
 		}
 	}
 	void writeToFile()
@@ -268,9 +316,9 @@ public:
 		out << size << endl;
 		for (short i = 0; i < size; i++)
 		{
-			out << shop[i].type << endl;
-			out << shop[i].name << endl;
-			out << shop[i].price << endl;
+			out << shop[i].getType() << endl;
+			out << shop[i].getName() << endl;
+			out << shop[i].getPrice() << endl;
 		}
 		out.close();
 		
@@ -286,11 +334,17 @@ public:
 			}
 			in >> size;
 			shop.resize(size);
+			string itemT;
+			string itemN;
+			int itemP;
 			for (short i = 0; i < size; i++)
 			{
-				in >> shop[i].type;
-				in >> shop[i].name;
-				in >> shop[i].price;
+				in >> itemT;
+				in >> itemN;
+				in >> itemP;
+				shop[i].setType(itemT);
+				shop[i].setName(itemN);
+				shop[i].setPrice(itemP);
 			}
 			in.close();
 			return;
@@ -309,11 +363,17 @@ public:
 			}
 			in >> size;
 			shop.resize(size);
+			string itemT;
+			string itemN;
+			int itemP;
 			for (short i = 0; i < size; i++)
 			{
-				in >> shop[i].type;
-				in >> shop[i].name;
-				in >> shop[i].price;
+				in >> itemT;
+				in >> itemN;
+				in >> itemP;
+				shop[i].setType(itemT);
+				shop[i].setName(itemN);
+				shop[i].setPrice(itemP);
 			}
 			in.close();
 		}
